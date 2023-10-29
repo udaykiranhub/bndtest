@@ -4,10 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <h1>I am test file</h1>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt3pA-QRtf_92_JztjapPfkY5HiZSqCgfTSQ&usqp=CAU">
-    <img src=".\public\one.jpeg">
+    <img id="img" class="img-circle"/>
+
+    <h1 id="demo"></h1>
+
+<!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt3pA-QRtf_92_JztjapPfkY5HiZSqCgfTSQ&usqp=CAU">-->
+
+<form action="data" method="GET">
+    <input type="submit" value="Ejs Data">
+</form>
+    <script>
+// <img src=".\public\one.jpeg">
+        function get(){
+            var xx=new XMLHttpRequest();
+            xx.open("GET","img",true);
+      //xhr.setRequestHeader("Accept", "text/html");
+            xx.onreadystatechange=function(){
+                if(this.readyState==4 && this.status==200){
+                    document.getElementById("demo").innerHTML=this.responseText;
+                    var i=document.getElementById("img");
+                    i.src=this.responseText;
+                }
+            }
+            xx.send();
+        }
+        get();
+    </script>
 </body>
 </html>
